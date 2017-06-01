@@ -1,0 +1,21 @@
+Title: Infi-gen
+
+Story: You're trapped in the infi-gen, an infinitely-generating dungeon, hence the name.
+Maybe there's a way out? 
+
+Game Mechanics:
+* grid system of 32x32 squares
+* turn-based movement and combat
+* randomly generating walls, exits, enemies, and items
+
+Player Mechanics:
+* start with a base weapon 
+* can only hold two weapons at a time
+* can store up to 10 health pots in a bag
+* can combine weapons
+
+Enemy Mechanics:
+* simple monsters, just hit you
+* will try to take items
+
+End Game: restart with no items except base weapon 
