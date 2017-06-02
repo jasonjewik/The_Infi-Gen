@@ -4,7 +4,7 @@
   <solid>0</solid>
   <visible>-1</visible>
   <depth>0</depth>
-  <persistent>-1</persistent>
+  <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
@@ -25,87 +25,18 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Initialize Grid
+            <string>windowSize = 64;
+cellSize = 128;
 
-//Variables
-cWidth = 16;
-cHeight = 16;
+xcoord_map = ds_map_create();
+ycoord_map = ds_map_create();
 
-hCells = room_width div cWidth;
-vCells = room_height div cHeight;
-
-//Grid Creation
-global.grid = mp_grid_create(0, 0, hCells, vCells, cWidth, cHeight);
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="3" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>x = obj_player.x;
-y = obj_player.y;
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="7" enumb="5">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>mp_grid_clear_all(global.grid);
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="7" enumb="4">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>//mp_grid_add_instances(global.grid, class_wall, false); 
+for (var i = windowSize + 64 * 1.5; i &lt; window_get_width() - windowSize * 1.5; i+= cellSize * 1.5) {
+    for (var j = windowSize + 64 * 2; j &lt; window_get_height() - windowSize * 8; j += cellSize * 1.5) {
+        ds_map_add(xcoord_map, ds_map_size(xcoord_map), i);
+        ds_map_add(ycoord_map, ds_map_size(ycoord_map), j);        
+    }
+}
 </string>
           </argument>
         </arguments>
@@ -128,13 +59,14 @@ y = obj_player.y;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>mp_grid_destroy(global.grid);
+            <string>ds_map_destroy(xcoord_map);
+ds_map_destroy(ycoord_map);
 </string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="8" enumb="0">
+    <event eventtype="8" enumb="75">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -151,20 +83,47 @@ y = obj_player.y;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_set_alpha(0.1);
+            <string>draw_set_font(fnt_text);
+draw_set_color(c_white);
+draw_set_halign(fa_center);
 
-//mp_grid_draw(global.grid);
+draw_text(window_get_width()/2, 48, "Inventory");
 
-for (var i = x - 128 - 1; i &lt; x + 128; i+= 32) {
-    draw_line(i, y - 128, i, y + 128);
+draw_set_color(c_black);
+draw_set_halign(fa_left);
+
+for (var k = 1; k &lt; global.maxItems; k++) {
+    if (global.sprite_array[k] != noone) draw_sprite_ext(global.sprite_array[k], image_index, ds_map_find_value(xcoord_map, k - 1), ds_map_find_value(ycoord_map, k - 1), 5, 5, image_angle, image_blend, image_alpha);        
 }
-for (var j = y - 128 - 1; j &lt; y + 128; j+= 32) {
-    draw_line(x - 128, j, x + 128, j);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="64">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>draw_roundrect_colour_ext(windowSize, windowSize * 2, window_get_width() - windowSize, window_get_height() - windowSize, 40, 40, c_black, c_black, false);
+
+for (var i = windowSize + 64 * 1.5; i &lt; window_get_width() - windowSize * 1.5; i+= cellSize * 1.5) {
+    for (var j = windowSize + 64 * 2; j &lt; window_get_height() - windowSize * 8; j += cellSize * 1.5) {
+        draw_roundrect_colour_ext(i, j, i + cellSize, j + cellSize, 5, 5, c_gray, c_gray, false);
+    }
 }
-
-draw_set_alpha(1);
-
-
 </string>
           </argument>
         </arguments>

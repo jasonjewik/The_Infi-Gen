@@ -6,8 +6,10 @@
   <NewExtensions/>
   <sounds name="sound"/>
   <sprites name="sprites">
-    <sprite>sprites\sprite0</sprite>
-    <sprite>sprites\sprite1</sprite>
+    <sprite>sprites\spr_wall</sprite>
+    <sprite>sprites\spr_hpPot</sprite>
+    <sprite>sprites\spr_something</sprite>
+    <sprite>sprites\spr_player</sprite>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
@@ -23,18 +25,47 @@
       <script>scripts\state_delete.gml</script>
       <script>scripts\state_cleanup.gml</script>
     </scripts>
+    <scripts name="Inventory">
+      <script>scripts\inventory_add.gml</script>
+      <script>scripts\inventory_cleanup.gml</script>
+    </scripts>
     <scripts name="Player States">
       <script>scripts\player_walk.gml</script>
     </scripts>
     <script>scripts\getInput.gml</script>
   </scripts>
+  <fonts name="fonts">
+    <font>fonts\fnt_text</font>
+  </fonts>
   <objects name="objects">
-    <object>objects\object0</object>
-    <object>objects\controller_grid</object>
-    <object>objects\object1</object>
+    <object>objects\obj_player</object>
+    <objects name="Solids">
+      <object>objects\class_solid</object>
+    </objects>
+    <objects name="Controllers">
+      <object>objects\controller_grid</object>
+      <object>objects\controller_pause</object>
+      <object>objects\controller_turn</object>
+    </objects>
+    <objects name="Data ">
+      <object>objects\data_inventory</object>
+    </objects>
+    <objects name="Items">
+      <object>objects\class_item</object>
+      <object>objects\item_hpPot</object>
+      <object>objects\object17</object>
+    </objects>
+    <objects name="GUI">
+      <object>objects\class_gui_bar</object>
+      <object>objects\gui_inventory</object>
+      <object>objects\gui_pause</object>
+      <object>objects\gui_health_bar</object>
+      <object>objects\gui_camera</object>
+    </objects>
   </objects>
   <rooms name="rooms">
-    <room>rooms\room0</room>
+    <room>rooms\rm_init</room>
+    <room>rooms\rm_1</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>

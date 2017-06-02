@@ -1,11 +1,36 @@
-if (right && walk == 0) {
-    if (!collision_point(x + sprite_width + 1, y + sprite_height/2, all, false, true)) target_x = x + 32;
-} else if (left && walk == 0) {
-    if (!collision_point(x - 1, y + sprite_height/2, all, false, true)) target_x = x - 32;
-} else if (up && walk == 0) {
-    if (!collision_point(x + sprite_width/2, y - 1, all, false, true)) target_y = y - 32;
-} else if (down && walk == 0) {
-    if (!collision_point(x + sprite_width/2, y + sprite_height + 1, all, false, true)) target_y = y + 32;
+if (h_speed != 0) {
+    up = 0;
+    down = 0;   
+}
+if (v_speed != 0) {
+    right = 0;
+    left = 0;
+}
+
+if (right && h_speed == 0) {
+    if (!collision_point(x + sprite_width + 1, y + sprite_height/2, wall, false, true)) {
+        target_x = x + 32;
+        global.turn++;
+        show_debug_message(global.turn);
+    }
+} else if (left && h_speed == 0) {
+    if (!collision_point(x - 1, y + sprite_height/2, wall, false, true)) {
+        target_x = x - 32;
+        global.turn++;
+        show_debug_message(global.turn);
+    }
+} else if (up && v_speed == 0) {
+    if (!collision_point(x + sprite_width/2, y - 1, wall, false, true)) {
+        target_y = y - 32;
+        global.turn++;
+        show_debug_message(global.turn);
+    }
+} else if (down && v_speed == 0) {
+    if (!collision_point(x + sprite_width/2, y + sprite_height + 1, wall, false, true)) {
+        target_y = y + 32;
+        global.turn++;
+        show_debug_message(global.turn);
+    }
 }
     
 if (target_x mod 32 > 0) {
@@ -26,17 +51,15 @@ if (y != target_y) {
     v_speed = 4 * sign(target_y - y);
 } else v_speed = 0;
 
-walk = h_speed * v_speed;
-
-if (place_meeting(x + h_speed, y, all)) {
-    while(!place_meeting(x + sign(h_speed), y, all)) {
+if (place_meeting(x + h_speed, y, wall)) {
+    while(!place_meeting(x + sign(h_speed), y, wall)) {
         x += sign(h_speed);
     }
     h_speed = 0;
 }
 x += h_speed;
-if (place_meeting(x, y + v_speed, all)) {
-    while(!place_meeting(x, y + sign(v_speed), all)) {
+if (place_meeting(x, y + v_speed, wall)) {
+    while(!place_meeting(x, y + sign(v_speed), wall)) {
         y += sign(v_speed);
     }
     v_speed = 0;

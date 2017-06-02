@@ -5,4 +5,5 @@ down = keyboard_check(ord('S'));
 
 attack = keyboard_check(vk_space);
 shift = keyboard_check(vk_shift);
-tab = keyboard_check(vk_tab);
+tab = keyboard_check_released(vk_tab);
+escape = keyboard_check_released(vk_escape);
