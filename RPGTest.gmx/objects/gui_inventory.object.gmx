@@ -31,12 +31,48 @@ cellSize = 128;
 xcoord_map = ds_map_create();
 ycoord_map = ds_map_create();
 
+select = 0; 
+
 for (var i = windowSize + 64 * 1.5; i &lt; window_get_width() - windowSize * 1.5; i+= cellSize * 1.5) {
     for (var j = windowSize + 64 * 2; j &lt; window_get_height() - windowSize * 8; j += cellSize * 1.5) {
         ds_map_add(xcoord_map, ds_map_size(xcoord_map), i);
         ds_map_add(ycoord_map, ds_map_size(ycoord_map), j);        
     }
 }
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>getInput();
+
+if (down_press || right_press) {
+    if (select + 1 &lt; global.maxItems) select++;
+    else select = 0;
+} else if (up_press || left_press) {
+    if (select == 0) select = global.maxItems -1;
+    else select--;   
+}
+
+if (shift) inventory_use();
+if (control) inventory_trash();
 </string>
           </argument>
         </arguments>
@@ -83,16 +119,27 @@ ds_map_destroy(ycoord_map);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_set_font(fnt_text);
+            <string>draw_roundrect_colour_ext(ds_map_find_value(xcoord_map, select) - 32, ds_map_find_value(ycoord_map, select) - 32, ds_map_find_value(xcoord_map, select) + cellSize + 32, ds_map_find_value(ycoord_map, select) + cellSize + 32, 20, 20, c_aqua, c_aqua, true);
+
+draw_set_font(fnt_text);
 draw_set_color(c_white);
 draw_set_halign(fa_center);
 
 draw_text(window_get_width()/2, 48, "Inventory");
 
+draw_set_font(fnt_text_smol);
+draw_text(window_get_width()/2, window_get_height()/2 + 64, ds_map_find_value(global.inventory_map, select));
+
+draw_set_font(fnt_text_smoler);
+draw_text(window_get_width()/2, window_get_height()/2 + 128, ds_map_find_value(global.inventory_desc, select));
+
+draw_set_halign(fa_left);
+draw_text(window_mouse_get_x() + 4, window_mouse_get_y(), "'Shift' to use#'Ctrl' to trash");
+
 draw_set_color(c_black);
 draw_set_halign(fa_left);
 
-for (var k = 1; k &lt; global.maxItems; k++) {
+for (var k = 1; k &lt;= global.maxItems; k++) {
     if (global.sprite_array[k] != noone) draw_sprite_ext(global.sprite_array[k], image_index, ds_map_find_value(xcoord_map, k - 1), ds_map_find_value(ycoord_map, k - 1), 5, 5, image_angle, image_blend, image_alpha);        
 }
 </string>

@@ -26,6 +26,7 @@
           <argument>
             <kind>1</kind>
             <string>name = "Item";
+desc = "Desc";
 </string>
           </argument>
         </arguments>
@@ -49,8 +50,8 @@
           <argument>
             <kind>1</kind>
             <string>if (place_meeting(x, y, obj_player)) {
-    inventory_add(name, object_index, sprite_index);
-    instance_destroy();
+    check = inventory_add(name, object_index, sprite_index, desc);
+    if (check) instance_destroy();
 }
 </string>
           </argument>

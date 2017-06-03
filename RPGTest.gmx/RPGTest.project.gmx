@@ -10,6 +10,8 @@
     <sprite>sprites\spr_hpPot</sprite>
     <sprite>sprites\spr_something</sprite>
     <sprite>sprites\spr_player</sprite>
+    <sprite>sprites\spr_sword</sprite>
+    <sprite>sprites\spr_enemy</sprite>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
@@ -27,20 +29,29 @@
     </scripts>
     <scripts name="Inventory">
       <script>scripts\inventory_add.gml</script>
+      <script>scripts\inventory_use.gml</script>
+      <script>scripts\inventory_trash.gml</script>
       <script>scripts\inventory_cleanup.gml</script>
     </scripts>
     <scripts name="Player States">
       <script>scripts\player_walk.gml</script>
     </scripts>
+    <scripts name="Enemy States">
+      <script>scripts\enemy_chase.gml</script>
+    </scripts>
     <script>scripts\getInput.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\fnt_text</font>
+    <font>fonts\fnt_text_smol</font>
+    <font>fonts\fnt_text_smoler</font>
   </fonts>
   <objects name="objects">
     <object>objects\obj_player</object>
     <objects name="Solids">
       <object>objects\class_solid</object>
+      <object>objects\obj_wall</object>
+      <object>objects\class_enemy</object>
     </objects>
     <objects name="Controllers">
       <object>objects\controller_grid</object>
@@ -53,7 +64,8 @@
     <objects name="Items">
       <object>objects\class_item</object>
       <object>objects\item_hpPot</object>
-      <object>objects\object17</object>
+      <object>objects\item_smtgPot</object>
+      <object>objects\item_sword</object>
     </objects>
     <objects name="GUI">
       <object>objects\class_gui_bar</object>

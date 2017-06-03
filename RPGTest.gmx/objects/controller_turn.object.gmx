@@ -26,6 +26,7 @@
           <argument>
             <kind>1</kind>
             <string>global.turn = 0;
+global.move = false;
 </string>
           </argument>
         </arguments>

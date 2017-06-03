@@ -36,6 +36,7 @@ vCells = room_height div cHeight;
 
 //Grid Creation
 global.grid = mp_grid_create(0, 0, hCells, vCells, cWidth, cHeight);
+mp_grid_add_instances(global.grid, obj_wall, false);
 </string>
           </argument>
         </arguments>
@@ -152,8 +153,6 @@ y = obj_player.y;
           <argument>
             <kind>1</kind>
             <string>draw_set_alpha(0.1);
-
-//mp_grid_draw(global.grid);
 
 for (var i = x - 128 - 1; i &lt; x + 128; i+= 32) {
     draw_line(i, y - 128, i, y + 128);

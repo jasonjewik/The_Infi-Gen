@@ -25,13 +25,20 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>global.inventory_map = ds_map_create(); //map of the item ids
-global.inventory_keys = ds_map_create(); //inverse map of the items (for other info)
+            <string>global.inventory_map = ds_map_create(); //map of the item names
+global.inventory_keys = ds_map_create(); //map of the item IDs
+global.inventory_desc = ds_map_create(); //map of the item desc
 
 global.maxItems = 8; //starts at 1
 
-for (var i = 1; i &lt; global.maxItems; i++) {
+for (var i = 1; i &lt;= global.maxItems; i++) {
     global.sprite_array[i] = noone;
+}
+
+for (var j = 0; j &lt; global.maxItems; j++) {
+    ds_map_add(global.inventory_map, j, "");
+    ds_map_add(global.inventory_keys, j, "");
+    ds_map_add(global.inventory_desc, j, "");    
 }
 </string>
           </argument>
