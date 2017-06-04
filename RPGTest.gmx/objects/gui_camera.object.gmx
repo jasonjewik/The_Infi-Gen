@@ -75,8 +75,7 @@ view_hview[0] = yRange;
 x = obj_player.x;
 y = obj_player.y;
 
-if (keyboard_check(vk_alt)) view_enabled = false;
-else view_enabled = true;
+if (keyboard_check_pressed(vk_alt)) view_enabled = !view_enabled;
 
 /*
 x = clamp(x, obj_player.x - leash, obj_player.x + leash);

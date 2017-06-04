@@ -42,8 +42,8 @@ rand_y = 0;
 number_of_rooms = irandom_range(8, 14);
 
 for (var i = 0; i &lt; number_of_rooms; i++) {
-    rand_x = irandom_range(0, hCells * 32);
-    rand_y = irandom_range(0, vCells * 32);
+    rand_x = irandom_range(128, (hCells - 15) * 32);
+    rand_y = irandom_range(128, (vCells - 15) * 32);
 
     start = instance_create(rand_x, rand_y, controller_start);
     xx = start.x/32;
@@ -51,8 +51,8 @@ for (var i = 0; i &lt; number_of_rooms; i++) {
     ds_grid_add(global.maze_grid, xx, yy, -1);
 }
 
-alarm_set(0, room_speed * 10);
-alarm_set(1, room_speed * 12);
+alarm_set(0, room_speed * 4);
+alarm_set(1, room_speed * 6);
 </string>
           </argument>
         </arguments>
@@ -76,8 +76,6 @@ alarm_set(1, room_speed * 12);
           <argument>
             <kind>1</kind>
             <string>player = instance_create(x, y, obj_player);
-
-
 </string>
           </argument>
         </arguments>

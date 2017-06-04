@@ -27,8 +27,8 @@
             <kind>1</kind>
             <string>move_snap(32, 32);
 
-width = irandom_range(8 * 32, 14 * 32);
-height = irandom_range(8 * 32, 14 * 32);
+width = irandom_range(4 * 32, 14 * 32);
+height = irandom_range(4 * 32, 14 * 32);
 
 if (width mod 32 != 0) width -= width mod 32;
 if (height mod 32 != 0) height -= height mod 32;
@@ -50,7 +50,7 @@ if (mp_grid_path(global.grid, path, x, y, connect.x, connect.y, false)) {
     for (var i = 0; i &lt; path_get_number(path); i++) instance_create(path_get_point_x(path, i), path_get_point_y(path, i), controller_path);
 }
 
-alarm_set(0, 3);
+alarm_set(0, room_speed);
 </string>
           </argument>
         </arguments>

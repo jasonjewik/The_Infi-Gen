@@ -30,7 +30,7 @@ wall = class_solid;
 
 for (var k = 256; k &lt; room_width - 256; k += 32) {
     for (var l = 256; l &lt; room_height - 256; l += 32) {
-        if (!place_meeting(k, l, wall)) {
+        if (!place_meeting(k, l, obj_wall) &amp;&amp; !place_meeting(k + 32, l + 32, obj_wall) &amp;&amp; !place_meeting(k - 32, l - 32, obj_wall)) {
             x = k;
             y = l;
             k = room_width;
