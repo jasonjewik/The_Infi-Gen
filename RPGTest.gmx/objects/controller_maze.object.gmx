@@ -4,7 +4,7 @@
   <solid>0</solid>
   <visible>-1</visible>
   <depth>0</depth>
-  <persistent>-1</persistent>
+  <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
@@ -25,24 +25,40 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Initialize Grid
-
-//Variables
-cWidth = 32;
+            <string>cWidth = 32;
 cHeight = 32;
 
 hCells = room_width div cWidth;
 vCells = room_height div cHeight;
 
-//Grid Creation
-global.grid = mp_grid_create(0, 0, hCells, vCells, cWidth, cHeight);
-mp_grid_add_instances(global.grid, obj_wall, false);
+global.maze_grid = ds_grid_create(hCells, vCells);
+mp_grid_to_ds_grid(global.grid, global.maze_grid);
+
+width = ds_grid_width(global.maze_grid);
+height = ds_grid_height(global.maze_grid);
+rand_x = 0;
+rand_y = 0;
+
+number_of_rooms = irandom_range(8, 14);
+
+for (var i = 0; i &lt; number_of_rooms; i++) {
+    rand_x = irandom_range(0, hCells * 32);
+    rand_y = irandom_range(0, vCells * 32);
+
+    start = instance_create(rand_x, rand_y, controller_start);
+    xx = start.x/32;
+    yy = start.y/32;
+    ds_grid_add(global.maze_grid, xx, yy, -1);
+}
+
+alarm_set(0, room_speed * 10);
+alarm_set(1, room_speed * 12);
 </string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="3" enumb="2">
+    <event eventtype="2" enumb="1">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -59,13 +75,15 @@ mp_grid_add_instances(global.grid, obj_wall, false);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>mp_grid_add_instances(global.grid, obj_wall, false);
+            <string>player = instance_create(x, y, obj_player);
+
+
 </string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="3" enumb="0">
+    <event eventtype="2" enumb="0">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -82,9 +100,11 @@ mp_grid_add_instances(global.grid, obj_wall, false);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (instance_exists(obj_player)) {
-    x = obj_player.x;
-    y = obj_player.y;
+            <string>for (var k = 0; k &lt; width; k++) {
+    for (var l = 0; l &lt; height; l++) {
+        if (ds_grid_get(global.maze_grid, k, l) == 0) instance_create(k * 32, l * 32, obj_wall);
+        ds_grid_add(global.maze_grid, k, l, -1);
+    }
 }
 </string>
           </argument>
@@ -108,30 +128,7 @@ mp_grid_add_instances(global.grid, obj_wall, false);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>mp_grid_clear_all(global.grid);
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="7" enumb="4">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>//mp_grid_add_instances(global.grid, class_wall, false); 
+            <string>ds_grid_destroy(global.maze_grid);
 </string>
           </argument>
         </arguments>
@@ -154,70 +151,7 @@ mp_grid_add_instances(global.grid, obj_wall, false);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>mp_grid_destroy(global.grid);
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="8" enumb="64">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>draw_set_halign(fa_left);
-draw_set_color(c_white);
-draw_set_font(fnt_text_smoler);
-
-draw_text(window_mouse_get_x() + 4, window_mouse_get_y(), string(mouse_x) + "," + string(mouse_y));
-
-draw_set_color(c_black);
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="8" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>draw_set_alpha(0.1);
-
-for (var i = x - 128 - 1; i &lt; x + 128; i+= 32) {
-    draw_line(i, y - 128, i, y + 128);
-}
-for (var j = y - 128 - 1; j &lt; y + 128; j+= 32) {
-    draw_line(x - 128, j, x + 128, j);
-}
-
-draw_set_alpha(1);
-
-
+            <string>if (ds_exists(global.maze_grid, ds_type_grid)) ds_grid_destroy(global.maze_grid);
 </string>
           </argument>
         </arguments>

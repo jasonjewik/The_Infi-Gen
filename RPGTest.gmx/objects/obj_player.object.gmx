@@ -27,6 +27,19 @@
             <kind>1</kind>
             <string>///Initialize Variables
 wall = class_solid;
+
+for (var k = 256; k &lt; room_width - 256; k += 32) {
+    for (var l = 256; l &lt; room_height - 256; l += 32) {
+        if (!place_meeting(k, l, wall)) {
+            x = k;
+            y = l;
+            k = room_width;
+            l = room_height;
+        }
+    }
+}
+move_snap(32, 32);
+
 target_x = x;
 target_y = y;
 h_speed = 0;
@@ -34,6 +47,9 @@ v_speed = 0;
 
 hp = 5;
 max_hp = 10;
+
+camera = instance_create(x, y, gui_camera);
+healthBar = instance_create(x, y, gui_health_bar);
 
 state_machine_init();
 state_create("Walk", player_walk);
