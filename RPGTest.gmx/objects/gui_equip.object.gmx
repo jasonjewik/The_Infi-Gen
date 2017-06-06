@@ -26,16 +26,20 @@
           <argument>
             <kind>1</kind>
             <string>global.equip_list = ds_list_create();
+global.equip_list_sprites = ds_list_create();
 
 global.max_equip = 2;
 
-for (var i = 0; i &lt; global.max_equip; i++) ds_list_add(global.equip_list, noone);
+for (var i = 0; i &lt; global.max_equip; i++) {
+    ds_list_add(global.equip_list, noone);
+    ds_list_add(global.equip_list_sprites, noone);
+}
 </string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="3" enumb="0">
+    <event eventtype="7" enumb="3">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -52,7 +56,37 @@ for (var i = 0; i &lt; global.max_equip; i++) ds_list_add(global.equip_list, noo
         <arguments>
           <argument>
             <kind>1</kind>
-            <string></string>
+            <string>ds_list_destroy(global.equip_list);
+ds_list_destroy(global.equip_list_sprites);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="74">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>getInput();
+if (instance_exists(obj_player)) {
+    player = obj_player;
+
+    if (mouse_middle_press) draw_sprite(ds_list_find_value(global.equip_list_sprites, 0), image_index, player.x, player.y - 32);
+}
+</string>
           </argument>
         </arguments>
       </action>
