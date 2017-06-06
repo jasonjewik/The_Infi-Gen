@@ -66,17 +66,19 @@ yRange = default_yRange;
             <kind>1</kind>
             <string>///Default Functions
 //Set the view and lock on player
-view_object[0] = obj_player;
-view_xview[0] = x - xBuffer;
-view_wview[0] = xRange;
-view_yview[0] = y - yBuffer;
-view_hview[0] = yRange;
-
-x = obj_player.x;
-y = obj_player.y;
+if (instance_exists(obj_player)) {
+    view_object[0] = obj_player;
+    view_xview[0] = x - xBuffer;
+    view_wview[0] = xRange;
+    view_yview[0] = y - yBuffer;
+    view_hview[0] = yRange;
+    
+    x = obj_player.x;
+    y = obj_player.y;
+    
+}
 
 if (keyboard_check_pressed(vk_alt)) view_enabled = !view_enabled;
-
 /*
 x = clamp(x, obj_player.x - leash, obj_player.x + leash);
 y = clamp(y, obj_player.y - leash, obj_player.y + leash);   

@@ -8,8 +8,9 @@ down_press = keyboard_check_released(ord('S'));
 right_press = keyboard_check_released(ord('D'));
 left_press = keyboard_check_released(ord('A'));
 
-attack = keyboard_check(vk_space);
+space = keyboard_check(vk_space);
 shift = keyboard_check_released(vk_shift);
 tab = keyboard_check_released(vk_tab);
+q = keyboard_check_released(ord('Q'));
 control = keyboard_check_released(vk_control);
 escape = keyboard_check_released(vk_escape);

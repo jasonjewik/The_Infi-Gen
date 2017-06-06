@@ -30,10 +30,14 @@
     <scripts name="Inventory">
       <script>scripts\inventory_add.gml</script>
       <script>scripts\inventory_use.gml</script>
+      <script>scripts\inventory_remove.gml</script>
       <script>scripts\inventory_trash.gml</script>
       <script>scripts\inventory_cleanup.gml</script>
+      <script>scripts\inventory_check_equip.gml</script>
+      <script>scripts\inventory_equip.gml</script>
     </scripts>
     <scripts name="Player States">
+      <script>scripts\place_player.gml</script>
       <script>scripts\player_walk.gml</script>
     </scripts>
     <scripts name="Enemy States">
@@ -49,6 +53,7 @@
   </fonts>
   <objects name="objects">
     <object>objects\obj_player</object>
+    <object>objects\obj_exit</object>
     <objects name="Solids">
       <object>objects\class_solid</object>
       <object>objects\obj_wall</object>
@@ -69,11 +74,11 @@
     <objects name="Items">
       <object>objects\class_item</object>
       <object>objects\item_hpPot</object>
-      <object>objects\item_smtgPot</object>
       <object>objects\item_sword</object>
     </objects>
     <objects name="GUI">
       <object>objects\class_gui_bar</object>
+      <object>objects\gui_equip</object>
       <object>objects\gui_inventory</object>
       <object>objects\gui_pause</object>
       <object>objects\gui_health_bar</object>
@@ -83,6 +88,7 @@
   <rooms name="rooms">
     <room>rooms\rm_init</room>
     <room>rooms\rm_1</room>
+    <room>rooms\rm_2</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>

@@ -75,7 +75,13 @@ alarm_set(1, room_speed * 6);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>player = instance_create(x, y, obj_player);
+            <string>if (!instance_exists(obj_player)) {
+    player = instance_create(x, y, obj_player);
+    with (player) wall = class_solid;
+} else place_player();
+instance_create(x, y, obj_exit);
+
+alarm_set(1, -1);
 </string>
           </argument>
         </arguments>

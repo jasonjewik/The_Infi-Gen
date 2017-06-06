@@ -28,17 +28,7 @@
             <string>///Initialize Variables
 wall = class_solid;
 
-for (var k = 256; k &lt; room_width - 256; k += 32) {
-    for (var l = 256; l &lt; room_height - 256; l += 32) {
-        if (!place_meeting(k, l, obj_wall) &amp;&amp; !place_meeting(k + 32, l + 32, obj_wall) &amp;&amp; !place_meeting(k - 32, l - 32, obj_wall)) {
-            x = k;
-            y = l;
-            k = room_width;
-            l = room_height;
-        }
-    }
-}
-move_snap(32, 32);
+place_player();
 
 target_x = x;
 target_y = y;
@@ -48,8 +38,8 @@ v_speed = 0;
 hp = 5;
 max_hp = 10;
 
-camera = instance_create(x, y, gui_camera);
-healthBar = instance_create(x, y, gui_health_bar);
+if (!instance_exists(gui_camera)) camera = instance_create(x, y, gui_camera);
+if (!instance_exists(gui_health_bar)) healthBar = instance_create(x, y, gui_health_bar);
 
 state_machine_init();
 state_create("Walk", player_walk);
@@ -82,6 +72,7 @@ getInput();
 state_execute();
 
 if (keyboard_check_pressed(ord('R'))) game_restart();
+if (keyboard_check_pressed(ord('Q'))) with (class_enemy) instance_destroy();
 </string>
           </argument>
         </arguments>

@@ -14,6 +14,11 @@
 texture_set_interpolation(false);
 randomize();
 
+instance_create(0, 0, data_inventory);
+instance_create(0, 0, controller_turn);
+instance_create(0, 0, controller_pause);
+instance_create(0, 0, gui_equip);
+
 room_goto_next();</code>
   <enableViews>0</enableViews>
   <clearViewBackground>-1</clearViewBackground>

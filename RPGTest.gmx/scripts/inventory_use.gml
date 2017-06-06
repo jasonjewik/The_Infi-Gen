@@ -8,11 +8,10 @@ switch (object) {
             if (hp < max_hp) hp++;
         }
         instance_deactivate_object(obj_player);
+        inventory_remove();
         break;
+    case "Basic Sword": 
+        if (inventory_check_equip()) inventory_equip(ds_map_find_value(global.inventory_keys, select), true);
+        else inventory_equip(ds_map_find_value(global.inventory_keys, select), false);
     default: break;
 }
-
-global.sprite_array[select + 1] = noone;
-ds_map_replace(global.inventory_map, select, "");
-ds_map_replace(global.inventory_keys, select, "");
-ds_map_replace(global.inventory_desc, select, "");
