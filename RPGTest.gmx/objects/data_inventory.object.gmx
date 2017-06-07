@@ -42,7 +42,7 @@ for (var j = 0; j &lt; global.maxItems; j++) {
 }
 
 inventory_add("Basic Sword", item_sword, spr_sword, "It's all in the title. What more do you want?");
-inventory_add("Basic Sword", item_sword, spr_sword, "It's all in the title. What more do you want?");
+inventory_add("Basic Axe", item_axe, spr_axe, "There's nothing special about this axe. Still useful, though.");
 </string>
           </argument>
         </arguments>

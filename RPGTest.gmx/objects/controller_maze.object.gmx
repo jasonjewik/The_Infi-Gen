@@ -51,8 +51,11 @@ for (var i = 0; i &lt; number_of_rooms; i++) {
     ds_grid_add(global.maze_grid, xx, yy, -1);
 }
 
-alarm_set(0, room_speed * 4);
+alarm_set(0, room_speed * 5);
 alarm_set(1, room_speed * 6);
+
+black = instance_create(x, y, fx_black);
+with (black) alarm_set(0, other.alarm[1] + 1);
 </string>
           </argument>
         </arguments>

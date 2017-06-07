@@ -12,6 +12,7 @@
     <sprite>sprites\spr_player</sprite>
     <sprite>sprites\spr_sword</sprite>
     <sprite>sprites\spr_enemy</sprite>
+    <sprite>sprites\spr_axe</sprite>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
@@ -75,14 +76,22 @@
       <object>objects\class_item</object>
       <object>objects\item_hpPot</object>
       <object>objects\item_sword</object>
+      <object>objects\item_axe</object>
     </objects>
     <objects name="GUI">
-      <object>objects\class_gui_bar</object>
-      <object>objects\gui_equip</object>
-      <object>objects\gui_inventory</object>
       <object>objects\gui_pause</object>
-      <object>objects\gui_health_bar</object>
       <object>objects\gui_camera</object>
+      <objects name="Inventory">
+        <object>objects\gui_inventory</object>
+        <object>objects\gui_equip</object>
+      </objects>
+      <objects name="Bars">
+        <object>objects\class_gui_bar</object>
+        <object>objects\gui_health_bar</object>
+      </objects>
+      <objects name="Transition">
+        <object>objects\fx_black</object>
+      </objects>
     </objects>
   </objects>
   <rooms name="rooms">

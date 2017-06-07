@@ -40,7 +40,30 @@ for (var i = x; i &lt; x + width; i += 32) {
     }
 }
 
-path = path_add();
+alarm_set(0, room_speed / 2);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>path = path_add();
 connect = instance_find(controller_clear, irandom_range(1, instance_number(controller_clear)));
 
 if (mp_grid_path(global.grid, path, x, y, connect.x, connect.y, false)) {
@@ -49,14 +72,10 @@ if (mp_grid_path(global.grid, path, x, y, connect.x, connect.y, false)) {
     
     for (var i = 0; i &lt; path_get_number(path); i++) instance_create(path_get_point_x(path, i), path_get_point_y(path, i), controller_path);
 }
-
-alarm_set(0, room_speed);
 </string>
           </argument>
         </arguments>
       </action>
-    </event>
-    <event eventtype="2" enumb="0">
       <action>
         <libid>1</libid>
         <id>203</id>

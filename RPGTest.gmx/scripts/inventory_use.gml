@@ -13,6 +13,9 @@ switch (object) {
     case "Basic Sword": 
         if (inventory_check_equip()) inventory_equip(ds_map_find_value(global.inventory_keys, select), spr_sword, -1);
         break;
+    case "Basic Axe":
+        if (inventory_check_equip()) inventory_equip(ds_map_find_value(global.inventory_keys, select), spr_axe, -1);
+        break;
     case "Equip 1":
         inventory_equip(ds_map_find_value(global.inventory_keys, select), -4, 0);
         break;

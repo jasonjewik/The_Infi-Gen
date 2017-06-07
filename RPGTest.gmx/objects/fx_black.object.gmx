@@ -3,7 +3,7 @@
   <spriteName>&lt;undefined&gt;</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>0</depth>
+  <depth>-9999</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -25,20 +25,107 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>windowSize = 64;
-cellSize = 128;
+            <string>///Fade to Black
 
-xcoord_map = ds_map_create();
-ycoord_map = ds_map_create();
+fadeDuration = room_speed * 6;
 
-select = 0; 
+myOrientation = 1;
+myAlpha = 1;
+fadeSpeed = 1/fadeDuration;
+i = 0;
+j = 0;
 
-for (var i = windowSize + 64 * 1.5; i &lt; window_get_width() - windowSize * 1.5; i+= cellSize * 1.5) {
-    for (var j = windowSize + 64 * 2; j &lt; window_get_height() - windowSize * 8; j += cellSize * 1.5) {
-        ds_map_add(xcoord_map, ds_map_size(xcoord_map), i);
-        ds_map_add(ycoord_map, ds_map_size(ycoord_map), j);        
-    }
-}
+loading[0] = "Loading.";
+loading[1] = "Loading..";
+loading[2] = "Loading...";
+
+message[0] = "Building rooms";
+message[1] = "Cleaning up bugs";
+message[2] = "Spinning fidget-spinners";
+message[3] = "Planning interior decor";
+message[4] = "Mathy-math calculations";
+message[5] = "Ooh boy, here we go";
+message[6] = "Lighting torches";
+message[7] = "Applying make-up to monsters";
+
+done = false;
+
+alarm_set(1, room_speed);
+alarm_set(2, room_speed * random_range(2, 4));
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="2">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>j = irandom_range(0, 7);
+
+alarm_set(2, room_speed * random_range(1, 3));
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="1">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if (i &lt; 2) i++;
+else if (i == 2) i = 0;
+
+alarm_set(1, room_speed);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>instance_destroy();
 </string>
           </argument>
         </arguments>
@@ -61,97 +148,16 @@ for (var i = windowSize + 64 * 1.5; i &lt; window_get_width() - windowSize * 1.5
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>getInput();
+            <string>/*
 
-if (down_press || right_press) {
-    if (select + 1 &lt; global.maxItems) select++;
-    else select = 0;
-} else if (up_press || left_press) {
-    if (select == 0) select = global.maxItems -1;
-    else select--;   
-}
-
-if (shift) inventory_use();
-if (control) inventory_trash();
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="7" enumb="3">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>ds_map_destroy(xcoord_map);
-ds_map_destroy(ycoord_map);
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="8" enumb="75">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>draw_roundrect_colour_ext(ds_map_find_value(xcoord_map, select) - 32, ds_map_find_value(ycoord_map, select) - 32, ds_map_find_value(xcoord_map, select) + cellSize + 32, ds_map_find_value(ycoord_map, select) + cellSize + 32, 20, 20, c_aqua, c_aqua, true);
-
-draw_set_font(fnt_text);
-draw_set_color(c_white);
-draw_set_halign(fa_center);
-
-draw_text(window_get_width()/2, 48, "Inventory");
-
-draw_set_font(fnt_text_smol);
-draw_text(window_get_width()/2, window_get_height()/2 + 64, ds_map_find_value(global.inventory_map, select));
-
-draw_set_font(fnt_text_smoler);
-desc = ds_map_find_value(global.inventory_desc, select);
-
-if (string_width(desc) &gt; window_get_width() - 128) {
-    for (var l = 0; l &lt; string_length(desc); l++) {
-         if (string_char_at(desc, l) == ".") {
-            desc = string_insert("#", desc, l + 1);
-            l = string_length(desc) + 1;
-         }
-    }
-}
-draw_text(window_get_width()/2, window_get_height()/2 + 128, desc);
-
-draw_set_halign(fa_left);
-draw_text(window_mouse_get_x() + 4, window_mouse_get_y(), "'Shift' to use#'Ctrl' to trash");
-
-draw_set_color(c_black);
-draw_set_halign(fa_left);
-
-for (var k = 1; k &lt;= global.maxItems; k++) {
-    if (global.sprite_array[k] != noone) draw_sprite_ext(global.sprite_array[k], image_index, ds_map_find_value(xcoord_map, k - 1), ds_map_find_value(ycoord_map, k - 1), 5, 5, image_angle, image_blend, image_alpha);        
-}
+if (!done)
+{
+    fadeSpeed = 1/fadeDuration;
+    myAlpha += fadeSpeed * myOrientation;
+    
+    if (myOrientation) if (myAlpha &gt;1) done = true;
+    else if (myAlpha &lt;=0) done = true; 
+} else instance_destroy();
 </string>
           </argument>
         </arguments>
@@ -174,13 +180,23 @@ for (var k = 1; k &lt;= global.maxItems; k++) {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_roundrect_colour_ext(windowSize, windowSize * 2, window_get_width() - windowSize, window_get_height() - windowSize, 40, 40, c_black, c_black, false);
+            <string>///Draw Blackness
+var oldAlpha = draw_get_alpha();
+draw_set_alpha(myAlpha);
+draw_rectangle_colour (0, 0, window_get_width(), window_get_height(), c_black, c_black, c_black, c_black, false);
+draw_set_alpha(oldAlpha);
 
-for (var i = windowSize + 64 * 1.5; i &lt; window_get_width() - windowSize * 1.5; i+= cellSize * 1.5) {
-    for (var j = windowSize + 64 * 2; j &lt; window_get_height() - windowSize * 8; j += cellSize * 1.5) {
-        draw_roundrect_colour_ext(i, j, i + cellSize, j + cellSize, 5, 5, c_gray, c_gray, false);
-    }
-}
+draw_set_font(fnt_text);
+draw_set_halign(fa_center);
+draw_set_color(c_white);
+
+draw_text(window_get_width()/2, window_get_height()/2, loading[i]);
+
+draw_set_font(fnt_text_smoler);
+draw_text(window_get_width()/2, window_get_height()/2 + 128, message[j]);
+
+draw_set_halign(fa_left);
+draw_set_color(c_black);
 </string>
           </argument>
         </arguments>
