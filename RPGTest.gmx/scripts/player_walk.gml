@@ -66,5 +66,9 @@ if (place_meeting(x, y + v_speed, wall)) {
 }
 y += v_speed;
 
-if (h_speed + v_speed != 0) global.move = true;
-else global.move = false;
+if (h_speed + v_speed != 0) {
+    global.move = true;
+}
+else {
+    global.move = false;
+}
