@@ -11,10 +11,10 @@ if (enemy_define_path() && global.move) {
     }
      
     if (x != _target_x) {
-        h_speed = 4 * sign(target_x - x);
+        h_speed = 4 * sign(_target_x - x);
     } else h_speed = 0;
     if (y != _target_y) {
-        v_speed = 4 * sign(target_y - y);
+        v_speed = 4 * sign(_target_y - y);
     } else v_speed = 0;
   
     if (h_speed != 0) v_speed = 0;
@@ -23,6 +23,7 @@ if (enemy_define_path() && global.move) {
     h_speed = 0;
     v_speed = 0;
     move_snap(32, 32);
+    get_point = false;
     path_end();
 }
 

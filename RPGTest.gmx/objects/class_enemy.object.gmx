@@ -34,6 +34,8 @@ h_speed = 0;
 v_speed = 0;
 wall = obj_wall;
 
+get_point = false;
+
 enemy_define_path();
 state_machine_init();
 state_create("Chase", enemy_chase);
@@ -84,7 +86,7 @@ state_init("Chase");
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>path_delete(path);
+            <string>if (path_exists(path)) path_delete(path);
 </string>
           </argument>
         </arguments>
@@ -109,7 +111,7 @@ state_init("Chase");
             <kind>1</kind>
             <string>draw_self();
 
-draw_path(path, x, y, true);
+if (path_exists(path)) draw_path(path, x, y, true);
 draw_ellipse_colour(target_x - 2, target_y - 2, target_x + 2, target_y + 2, c_red, c_red, false);
 </string>
           </argument>

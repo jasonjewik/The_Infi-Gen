@@ -47,11 +47,16 @@ message[4] = "Mathy-math calculations";
 message[5] = "Ooh boy, here we go";
 message[6] = "Lighting torches";
 message[7] = "Applying make-up to monsters";
+message[8] = "BRB. Potty break.";
+message[9] = "Hiring goblins.";
+message[10] = "Stupid butterflies everywhere.";
+message[11] = "Checking random stuff.";
+message[12] = "Good luck";
 
 done = false;
 
 alarm_set(1, room_speed);
-alarm_set(2, room_speed * random_range(2, 4));
+alarm_set(2, room_speed * random_range(1, 3));
 </string>
           </argument>
         </arguments>
@@ -74,7 +79,7 @@ alarm_set(2, room_speed * random_range(2, 4));
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>j = irandom_range(0, 7);
+            <string>j = irandom_range(0, array_length_1d(message) - 1);
 
 alarm_set(2, room_speed * random_range(1, 3));
 </string>

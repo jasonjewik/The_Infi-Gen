@@ -71,7 +71,19 @@ state_init("Walk");
 getInput();
 state_execute();
 
-if (q) with (class_enemy) instance_destroy();
+if (q) {
+    with (class_enemy) instance_destroy();
+    x = obj_exit.x;
+    y = obj_exit.y;
+    target_x = x;
+    target_y = y;
+}
+if (mouse_check_button_released(mb_left)) instance_create(mouse_x, mouse_y, class_enemy);
+if (mouse_check_button(mb_right)) {
+    todel = collision_point(mouse_x, mouse_y, obj_wall, false, true);
+    mp_grid_clear_cell(global.grid, mouse_x - (mouse_x mod 32), mouse_y - (mouse_y mod 32));
+    with (todel) instance_destroy();
+}
 </string>
           </argument>
         </arguments>
