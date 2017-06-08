@@ -25,7 +25,14 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>ds_grid_add(global.maze_grid, x/32, y/32, -1);
+            <string>/*randx = irandom_range(0, 96);
+randy = irandom_range(0, 96);
+
+_randx = randx - randx mod 32;
+_randy = randy - randy mod 32;
+tile_add(floor_desert, _randx, _randy, _randx + 32, _randy + 32, x, y, 10);*/
+
+ds_grid_add(global.maze_grid, x/32, y/32, -1);
 alarm_set(0, room_speed / 2);
 </string>
           </argument>

@@ -26,4 +26,3 @@ else
 if(_push) 
   ds_stack_push(state_stack,state_next);
 
-show_debug_message(state_name);

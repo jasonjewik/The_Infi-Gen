@@ -12,6 +12,7 @@ space = keyboard_check(vk_space);
 shift = keyboard_check_released(vk_shift);
 tab = keyboard_check_released(vk_tab);
 q = keyboard_check_released(ord('Q'));
+z = keyboard_check_released(ord('Z'));
 control = keyboard_check_released(vk_control);
 escape = keyboard_check_released(vk_escape);
 

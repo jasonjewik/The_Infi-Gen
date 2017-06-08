@@ -27,6 +27,13 @@
             <kind>1</kind>
             <string>move_snap(32, 32);
 
+randx = irandom_range(0, 96);
+randy = irandom_range(0, 96);
+
+_randx = randx - randx mod 32;
+_randy = randy - randy mod 32;
+tile_add(floor_desert, _randx, _randy, _randx + 32, _randy + 32, x, y, 10);
+
 width = irandom_range(4 * 32, 14 * 32);
 height = irandom_range(4 * 32, 14 * 32);
 

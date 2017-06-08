@@ -32,8 +32,8 @@ place_player();
 
 target_x = x;
 target_y = y;
-_x = (x - x mod 32)/32;
-_y = (y - y mod 32)/32;
+//_x = (x - x mod 32)/32;
+//_y = (y - y mod 32)/32;
 h_speed = 0;
 v_speed = 0;
 
@@ -45,8 +45,33 @@ if (!instance_exists(gui_health_bar)) healthBar = instance_create(x, y, gui_heal
 
 state_machine_init();
 state_create("Walk", player_walk);
+state_create("Attack", player_attack);
 
 state_init("Walk");
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>state_switch_previous();
+global.move = false;
 </string>
           </argument>
         </arguments>
@@ -73,12 +98,19 @@ state_init("Walk");
 getInput();
 state_execute();
 
-if (q) {
+if (z) {
     with (class_enemy) instance_destroy();
     x = obj_exit.x;
     y = obj_exit.y;
     target_x = x;
     target_y = y;
+}
+if (q) {
+    state_switch(player_attack, true);
+    alarm_set(0, room_speed/4);
+    global.move = true;
+    global.turn++;
+    show_debug_message(global.turn);
 }
 if (mouse_check_button_released(mb_left)) instance_create(mouse_x, mouse_y, class_enemy);
 if (mouse_check_button(mb_right)) {
@@ -86,6 +118,35 @@ if (mouse_check_button(mb_right)) {
     todel = collision_point(mouse_x, mouse_y, obj_wall, false, true);
     with (todel) instance_destroy();
 }
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/*Animation
+if (!global.move) {
+    image_index = 0;
+    image_speed = 0;
+} else image_speed = 2;
+
+if (h_speed &gt; 0) sprite_index = spr_player_walk_right;
+if (h_speed &lt; 0) sprite_index = spr_player_walk_left;
+if (h_speed == 0) sprite_index = spr_player;
 </string>
           </argument>
         </arguments>

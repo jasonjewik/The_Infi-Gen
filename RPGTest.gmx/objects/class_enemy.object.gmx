@@ -26,6 +26,9 @@
           <argument>
             <kind>1</kind>
             <string>path = path_add();
+
+hp = irandom_range(5, 10);
+
 target_x = x;
 target_y = y;
 _target_x = x;

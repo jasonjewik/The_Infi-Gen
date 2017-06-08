@@ -66,12 +66,7 @@ if (place_meeting(x, y + v_speed, wall)) {
 }
 y += v_speed;
 
-if (h_speed + v_speed != 0) {
-    mp_grid_clear_cell(global.grid, _x, _y);
-    //mp_grid_add_cell(global.grid, target_x/32, target_y/32);
-    global.move = true;
-} else {
-    _x = (x - x mod 32)/32;
-    _y = (y - y mod 32)/32;
-    global.move = false;
+if (state_name == "Walk") {
+    if (h_speed + v_speed != 0) global.move = true; 
+    else global.move = false;
 }

@@ -7,7 +7,8 @@
   <sounds name="sound"/>
   <sprites name="sprites">
     <sprite>sprites\spr_player</sprite>
-    <sprite>sprites\spr_player_walk</sprite>
+    <sprite>sprites\spr_player_walk_left</sprite>
+    <sprite>sprites\spr_player_walk_right</sprite>
     <sprite>sprites\spr_exit</sprite>
     <sprite>sprites\spr_wall</sprite>
     <sprite>sprites\spr_hpPot</sprite>
@@ -16,7 +17,10 @@
     <sprite>sprites\spr_enemy</sprite>
     <sprite>sprites\spr_axe</sprite>
   </sprites>
-  <backgrounds name="background"/>
+  <backgrounds name="background">
+    <background>background\floor_desert</background>
+    <background>background\tileset_desert</background>
+  </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
     <scripts name="State Machine">
@@ -41,6 +45,7 @@
     </scripts>
     <scripts name="Player States">
       <script>scripts\place_player.gml</script>
+      <script>scripts\player_attack.gml</script>
       <script>scripts\player_walk.gml</script>
     </scripts>
     <scripts name="Enemy States">
