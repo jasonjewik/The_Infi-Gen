@@ -32,6 +32,8 @@ place_player();
 
 target_x = x;
 target_y = y;
+_x = (x - x mod 32)/32;
+_y = (y - y mod 32)/32;
 h_speed = 0;
 v_speed = 0;
 
@@ -80,8 +82,8 @@ if (q) {
 }
 if (mouse_check_button_released(mb_left)) instance_create(mouse_x, mouse_y, class_enemy);
 if (mouse_check_button(mb_right)) {
+    mp_grid_clear_cell(global.grid, (mouse_x - mouse_x mod 32)/32, (mouse_y - mouse_y mod 32)/32);
     todel = collision_point(mouse_x, mouse_y, obj_wall, false, true);
-    mp_grid_clear_cell(global.grid, mouse_x - (mouse_x mod 32), mouse_y - (mouse_y mod 32));
     with (todel) instance_destroy();
 }
 </string>

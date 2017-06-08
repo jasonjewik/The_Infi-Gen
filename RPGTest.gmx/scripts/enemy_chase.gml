@@ -24,8 +24,12 @@ if (enemy_define_path() && global.move) {
     v_speed = 0;
     move_snap(32, 32);
     get_point = false;
-    path_end();
 }
+
+if (place_meeting(x + h_speed * 2, y, obj_player)) h_speed = 0;
+if (place_meeting(x, y + v_speed * 2, obj_player)) v_speed = 0;
+if (place_meeting(x + h_speed * 2, y, class_enemy)) h_speed = 0;
+if (place_meeting(x, y + v_speed * 2, class_enemy)) v_speed = 0;
 
 if (place_meeting(x + h_speed, y, wall)) {
     while(!place_meeting(x + sign(h_speed), y, wall)) {
