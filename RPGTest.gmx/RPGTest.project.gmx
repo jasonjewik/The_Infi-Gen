@@ -52,6 +52,35 @@
       <script>scripts\enemy_define_path.gml</script>
       <script>scripts\enemy_chase.gml</script>
     </scripts>
+    <scripts name="Lights">
+      <script>scripts\lightmap_init.gml</script>
+      <script>scripts\lightmap_draw.gml</script>
+      <script>scripts\lightmap_update.gml</script>
+      <script>scripts\lightmap_resize.gml</script>
+      <script>scripts\lightmap_set_ambient.gml</script>
+      <script>scripts\lightmap_set_light_parent_object.gml</script>
+      <script>scripts\lightmap_set_caster_parent_object.gml</script>
+      <script>scripts\lightmap_set_shadows_enabled.gml</script>
+      <script>scripts\lightmap_move_with_view.gml</script>
+      <script>scripts\lightmap_set_shadow_size.gml</script>
+      <script>scripts\lightmap_draw_shadow.gml</script>
+      <script>scripts\light_init_point.gml</script>
+      <script>scripts\light_init_sprite.gml</script>
+      <script>scripts\light_set_radius.gml</script>
+      <script>scripts\light_set_color.gml</script>
+      <script>scripts\light_set_type.gml</script>
+      <script>scripts\light_set_sprite.gml</script>
+      <script>scripts\light_set_rotation.gml</script>
+      <script>scripts\light_set_sprite_index.gml</script>
+      <script>scripts\light_set_height.gml</script>
+      <script>scripts\caster_init_polygon.gml</script>
+      <script>scripts\caster_init_sprite.gml</script>
+      <script>scripts\caster_init_rectangle.gml</script>
+      <script>scripts\caster_init_circle.gml</script>
+      <script>scripts\caster_add_point.gml</script>
+      <script>scripts\caster_draw_debug.gml</script>
+      <script>scripts\caster_set_height.gml</script>
+    </scripts>
     <script>scripts\getInput.gml</script>
   </scripts>
   <fonts name="fonts">
@@ -88,6 +117,12 @@
     <objects name="GUI">
       <object>objects\gui_pause</object>
       <object>objects\gui_camera</object>
+      <objects name="Lights">
+        <object>objects\gui_lightmap</object>
+        <object>objects\class_gui_caster</object>
+        <object>objects\class_gui_light</object>
+        <object>objects\gui_player_light</object>
+      </objects>
       <objects name="Inventory">
         <object>objects\gui_inventory</object>
         <object>objects\gui_equip</object>

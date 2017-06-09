@@ -3,11 +3,131 @@
   <spriteName>spr_wall</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>0</depth>
+  <depth>-100</depth>
   <persistent>0</persistent>
   <parentName>class_solid</parentName>
   <maskName>&lt;undefined&gt;</maskName>
-  <events/>
+  <events>
+    <event eventtype="0" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>shadow = false;
+alarm_set(0, room_speed);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>up = mp_grid_get_cell(global.grid, x/32, (y - 32)/32);
+down = mp_grid_get_cell(global.grid, x/32, (y + 32)/32);
+left = mp_grid_get_cell(global.grid, (x - 32)/32, y/32);
+right = mp_grid_get_cell(global.grid, (x + 32)/32, y/32);
+
+xx = irandom_range(32, background_get_width(tileset_desert) - 64);
+yy = irandom_range(32, background_get_height(tileset_desert) - 6 * 32);
+
+_x = xx - (xx mod 32);
+_y = yy - (yy mod 32);
+
+if (down == 0) {
+    tile_add(tileset_desert, _x, 320, 32, 32, x, y, -97);
+    shadow = true;
+} else if (up == 0) {
+    randx = irandom_range(0, 96);
+    randy = irandom_range(0, 96);
+    
+    _randx = randx - randx mod 32;
+    _randy = randy - randy mod 32;
+    tile_add(floor_desert, _randx, _randy, 32, 32, x, y, 10);
+    if (left == 0) tile_add(tileset_desert, 0, 0, 32, 32, x, y, -99);
+    else if (right == 0) tile_add(tileset_desert, background_get_width(tileset_desert) - 32, 0, 32, 32, x, y, -99);
+    else tile_add(tileset_desert, _x, 0, 32, 32, x, y, -99);
+} else if (left == 0) {
+    randx = irandom_range(0, 96);
+    randy = irandom_range(0, 96);
+    
+    _randx = randx - randx mod 32;
+    _randy = randy - randy mod 32;
+    tile_add(floor_desert, _randx, _randy, 32, 32, x, y, 10);
+    tile_add(tileset_desert, 0, _y, 32, 32, x, y, -98);
+} else if (right == 0) {
+    randx = irandom_range(0, 96);
+    randy = irandom_range(0, 96);
+    
+    _randx = randx - randx mod 32;
+    _randy = randy - randy mod 32;
+    tile_add(floor_desert, _randx, _randy, 32, 32, x, y, 10);
+    tile_add(tileset_desert, 320, _y, 32, 32, x, y, -98);
+} else tile_add(tileset_desert, 32, 32, 32, 32, x, y, -98);
+
+alarm_set(0, -1);
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/*if (shadow) {
+    draw_set_alpha(0.5);
+    
+    draw_rectangle_colour(x, y + sprite_height, x + sprite_width - 1, y + sprite_height * 2, c_black, c_black, c_black, c_black, false);
+    
+    draw_set_alpha(1);
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+  </events>
   <PhysicsObject>0</PhysicsObject>
   <PhysicsObjectSensor>0</PhysicsObjectSensor>
   <PhysicsObjectShape>0</PhysicsObjectShape>

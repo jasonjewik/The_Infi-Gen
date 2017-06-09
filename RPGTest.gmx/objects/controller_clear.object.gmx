@@ -28,16 +28,16 @@
             <string>chance = irandom_range(0, 1000);
 spawn_chance = irandom_range(0, 1000);
 
-/*randx = irandom_range(0, 96);
+randx = irandom_range(0, 96);
 randy = irandom_range(0, 96);
 
 _randx = randx - randx mod 32;
 _randy = randy - randy mod 32;
-tile_add(floor_desert, _randx, _randy, _randx + 32, _randy + 32, x, y, 10);*/
+tile_add(floor_desert, _randx, _randy, 32, 32, x, y, 10);
 
 if (chance &lt;= 2) {
     path = path_add();
-    connect = instance_find(controller_clear, irandom_range(1, instance_number(controller_clear)));
+    connect = instance_find(choose(controller_clear, controller_start), irandom_range(1, instance_number(choose(controller_clear, controller_start))));
     
     
     if (mp_grid_path(global.grid, path, x, y, connect.x, connect.y, false)) {

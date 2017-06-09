@@ -11,7 +11,8 @@
   <colour>12632256</colour>
   <showcolour>-1</showcolour>
   <code>instance_create(0, 0, controller_grid);
-instance_create(0, 0, controller_maze);</code>
+instance_create(0, 0, controller_maze);
+instance_create(0, 0, gui_lightmap);</code>
   <enableViews>-1</enableViews>
   <clearViewBackground>-1</clearViewBackground>
   <clearDisplayBuffer>-1</clearDisplayBuffer>

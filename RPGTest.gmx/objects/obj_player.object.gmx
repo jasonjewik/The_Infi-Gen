@@ -3,7 +3,7 @@
   <spriteName>spr_exit</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>0</depth>
+  <depth>-98</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -29,6 +29,7 @@
 wall = class_solid;
 
 place_player();
+instance_create(x, y, gui_player_light);
 
 target_x = x;
 target_y = y;
@@ -97,6 +98,7 @@ global.move = false;
             <string>///Everything
 getInput();
 state_execute();
+if (!instance_exists(gui_player_light)) instance_create(x, y, gui_player_light);
 
 if (z) {
     with (class_enemy) instance_destroy();
