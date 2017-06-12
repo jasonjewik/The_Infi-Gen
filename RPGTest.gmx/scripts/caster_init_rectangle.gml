@@ -1,4 +1,4 @@
-﻿var left = argument0;
+var left = argument0;
 var top = argument1;
 var right = argument2;
 var bottom = argument3;

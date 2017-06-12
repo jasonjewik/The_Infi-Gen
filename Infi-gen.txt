@@ -18,4 +18,6 @@ Enemy Mechanics:
 * simple monsters, just hit you
 * will try to take items
 
+Lighting / Shadow System credits: @flokkienathur on the GM Forums
+
 End Game: restart with no items except base weapon 

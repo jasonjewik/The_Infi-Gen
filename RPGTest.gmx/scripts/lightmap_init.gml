@@ -1,4 +1,4 @@
-﻿//DOES: Uses this object as a lightmap
+//DOES: Uses this object as a lightmap
 
 //USAGE: lightmap_init(<width>,<height>);
 

@@ -1,4 +1,4 @@
-﻿//DOES: Adds a point to this polygon caster
+//DOES: Adds a point to this polygon caster
 
 //USAGE: caster_add_point(<x>, <y>);
 // - <x> is relative to the objects x

@@ -1,3 +1,11 @@
+if (q) {
+    state_switch("Attack", true);
+    alarm_set(0, room_speed/4);
+    global.move = true;
+    global.turn++;
+    show_debug_message(global.turn);
+}
+
 if (h_speed != 0) {
     up = 0;
     down = 0;   
@@ -70,3 +78,5 @@ if (state_name == "Walk") {
     if (h_speed + v_speed != 0) global.move = true; 
     else global.move = false;
 }
+
+

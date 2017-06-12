@@ -1,4 +1,4 @@
-﻿//DOES: Inits this object as a polygon caster (for shadows of course)
+//DOES: Inits this object as a polygon caster (for shadows of course)
 
 //USAGE: caster_init_polygon();
 

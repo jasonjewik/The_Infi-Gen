@@ -1,2 +1,2 @@
-﻿lightmap_shadows = argument0;
+lightmap_shadows = argument0;
 

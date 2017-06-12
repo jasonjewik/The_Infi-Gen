@@ -1,4 +1,4 @@
-﻿//DOES: Sets the lights sprite index
+//DOES: Sets the lights sprite index
 
 //USAGE: light_set_sprite_index(<sprite index>);
 

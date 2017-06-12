@@ -177,11 +177,11 @@ mp_grid_add_instances(global.grid, obj_wall, false);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_set_halign(fa_left);
+            <string>/*draw_set_halign(fa_left);
 draw_set_color(c_white);
 draw_set_font(fnt_text_smoler);
 
-//draw_text(window_mouse_get_x() + 4, window_mouse_get_y(), string(mouse_x) + "," + string(mouse_y));
+draw_text(window_mouse_get_x() + 4, window_mouse_get_y(), string(mouse_x) + "," + string(mouse_y));
 draw_text(window_mouse_get_x() + 4, window_mouse_get_y(), string(mp_grid_get_cell(global.grid, (mouse_x - mouse_x mod 32)/32, (mouse_y - mouse_y mod 32)/32)));
 
 draw_set_color(c_black);

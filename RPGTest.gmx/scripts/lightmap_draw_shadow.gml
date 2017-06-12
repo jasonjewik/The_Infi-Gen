@@ -1,4 +1,4 @@
-﻿var x_1 = argument0;
+var x_1 = argument0;
 var y_1 = argument1;
 var x_2 = argument2;
 var y_2 = argument3;

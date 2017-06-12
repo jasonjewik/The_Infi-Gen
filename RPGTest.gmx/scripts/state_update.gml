@@ -1,5 +1,3 @@
-if (hp <= 0) state_switch("Die", true);
-
 if(state_next != state)
 {
   state=state_next;

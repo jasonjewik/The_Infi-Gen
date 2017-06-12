@@ -1,4 +1,4 @@
-﻿//DOES: resizes the lightmap
+//DOES: resizes the lightmap
 
 //USAGE: lightmap_resize(<new_width>,<new_height>);
 

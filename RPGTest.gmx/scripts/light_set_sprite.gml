@@ -1,4 +1,4 @@
-﻿//DOES: sets the sprite for this light (light mask if you may)
+//DOES: sets the sprite for this light (light mask if you may)
 
 //USAGE: light_set_sprite(<sprite>);
 

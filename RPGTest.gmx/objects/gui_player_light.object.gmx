@@ -25,9 +25,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>init_rad = 64;
-low_rad = 62;
-high_rad = 66;
+            <string>init_rad = 128;
+low_rad = init_rad - 2;
+high_rad = init_rad + 2;
 rad = init_rad;
 
 light_init_point(init_rad, c_white);

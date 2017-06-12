@@ -1,4 +1,4 @@
-﻿caster_init_polygon();
+caster_init_polygon();
 
 var radius = argument0;
 var fractions = argument1;

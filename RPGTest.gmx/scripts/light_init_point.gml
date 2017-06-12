@@ -1,4 +1,4 @@
-﻿//DOES: Makes this object a point light
+//DOES: Makes this object a point light
 
 //USAGE: light_init_point(<radius>, <color>);
 

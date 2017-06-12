@@ -7,8 +7,7 @@
   <sounds name="sound"/>
   <sprites name="sprites">
     <sprite>sprites\spr_player</sprite>
-    <sprite>sprites\spr_player_walk_left</sprite>
-    <sprite>sprites\spr_player_walk_right</sprite>
+    <sprite>sprites\spr_player_walk</sprite>
     <sprite>sprites\spr_exit</sprite>
     <sprite>sprites\spr_wall</sprite>
     <sprite>sprites\spr_hpPot</sprite>
@@ -19,6 +18,7 @@
   </sprites>
   <backgrounds name="background">
     <background>background\floor_desert</background>
+    <background>background\titlecard</background>
     <background>background\tileset_desert</background>
   </backgrounds>
   <paths name="paths"/>
@@ -115,8 +115,10 @@
       <object>objects\item_axe</object>
     </objects>
     <objects name="GUI">
+      <object>objects\gui_damage</object>
       <object>objects\gui_pause</object>
       <object>objects\gui_camera</object>
+      <object>objects\gui_button</object>
       <objects name="Lights">
         <object>objects\gui_lightmap</object>
         <object>objects\class_gui_caster</object>
@@ -137,6 +139,7 @@
     </objects>
   </objects>
   <rooms name="rooms">
+    <room>rooms\rm_main_menu</room>
     <room>rooms\rm_init</room>
     <room>rooms\rm_1</room>
     <room>rooms\rm_2</room>

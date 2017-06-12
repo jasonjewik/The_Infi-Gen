@@ -15,6 +15,7 @@ q = keyboard_check_released(ord('Q'));
 z = keyboard_check_released(ord('Z'));
 control = keyboard_check_released(vk_control);
 escape = keyboard_check_released(vk_escape);
+enter = keyboard_check_released(vk_enter);
 
 r = keyboard_check_pressed(ord('R'));
 e = keyboard_check_pressed(ord('E'));

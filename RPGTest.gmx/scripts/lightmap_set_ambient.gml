@@ -1,4 +1,4 @@
-﻿//DOES: set the lightmap ambient value
+//DOES: set the lightmap ambient value
 
 //USAGE: lightmap_set_ambient(<ambient>);
 // - <abient> between 0 and 1, where 1 is completely lit, and 0 is completely dark

@@ -25,7 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>path = path_add();
+            <string>event_inherited();
+path = path_add();
 
 hp = irandom_range(5, 10);
 
@@ -67,6 +68,8 @@ state_init("Chase");
           <argument>
             <kind>1</kind>
             <string>state_execute();
+
+if (hp &lt;= 0) instance_destroy();
 </string>
           </argument>
         </arguments>
