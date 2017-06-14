@@ -72,6 +72,7 @@ alarm_set(0, room_speed);
             <kind>1</kind>
             <string>path = path_add();
 connect = instance_find(controller_clear, irandom_range(1, instance_number(controller_clear)));
+if (!connect) connect = instance_find(controller_start, irandom_range(1, instance_number(controller_clear)));
 
 if (mp_grid_path(global.grid, path, x, y, connect.x, connect.y, false)) {
     path_set_kind(path, 0);

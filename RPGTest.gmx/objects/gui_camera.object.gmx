@@ -28,7 +28,7 @@
             <string>//Turn on views
 view_enabled = true;
 
-initLeash = 32;
+/*initLeash = 32;
 leash = initLeash;
 cellSize = 32;
 cameraMult = 10;
@@ -68,17 +68,17 @@ yRange = default_yRange;
 //Set the view and lock on player
 if (instance_exists(obj_player)) {
     view_object[0] = obj_player;
-    view_xview[0] = x - xBuffer;
-    view_wview[0] = xRange;
-    view_yview[0] = y - yBuffer;
-    view_hview[0] = yRange;
+    view_xview[0] = x - window_get_width()/8;
+    view_wview[0] = window_get_width()/4;
+    view_yview[0] = y - window_get_height()/8;
+    view_hview[0] = window_get_height()/4;
     
     x = obj_player.x;
     y = obj_player.y;
     
 }
 
-if (keyboard_check_pressed(vk_alt)) view_enabled = !view_enabled;
+//if (keyboard_check_pressed(vk_alt)) view_enabled = !view_enabled;
 /*
 x = clamp(x, obj_player.x - leash, obj_player.x + leash);
 y = clamp(y, obj_player.y - leash, obj_player.y + leash);   

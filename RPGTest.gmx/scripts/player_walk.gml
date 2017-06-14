@@ -19,24 +19,28 @@ if (right && h_speed == 0) {
     if (!collision_point(x + sprite_width + 1, y + sprite_height/2, wall, false, true)) {
         target_x = x + 32;
         global.turn++;
+        hp++;
         show_debug_message(global.turn);
     }
 } else if (left && h_speed == 0) {
     if (!collision_point(x - 1, y + sprite_height/2, wall, false, true)) {
         target_x = x - 32;
         global.turn++;
+        hp++;
         show_debug_message(global.turn);
     }
 } else if (up && v_speed == 0) {
     if (!collision_point(x + sprite_width/2, y - 1, wall, false, true)) {
         target_y = y - 32;
         global.turn++;
+        hp++;
         show_debug_message(global.turn);
     }
 } else if (down && v_speed == 0) {
     if (!collision_point(x + sprite_width/2, y + sprite_height + 1, wall, false, true)) {
         target_y = y + 32;
         global.turn++;
+        hp++;
         show_debug_message(global.turn);
     }
 }
@@ -75,7 +79,9 @@ if (place_meeting(x, y + v_speed, wall)) {
 y += v_speed;
 
 if (state_name == "Walk") {
-    if (h_speed + v_speed != 0) global.move = true; 
+    if (h_speed + v_speed != 0) {
+        global.move = true; 
+    }
     else global.move = false;
 }
 

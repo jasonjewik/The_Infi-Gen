@@ -108,6 +108,11 @@ draw_set_font(fnt_text_smol);
 draw_set_halign(fa_center);
 
 if (display) draw_text(window_get_width()/2, window_get_height()/2, "Press Enter");
+
+/*draw_set_font(fnt_text_smoler);
+draw_set_halign(fa_left);
+draw_text(window_mouse_get_x(), window_mouse_get_y() + 10, string(window_get_width()) + ", " + string(window_get_height()));
+draw_text(window_mouse_get_x(), window_mouse_get_y() + 30, string(view_wview) + ", " + string(view_hview));
 </string>
           </argument>
         </arguments>

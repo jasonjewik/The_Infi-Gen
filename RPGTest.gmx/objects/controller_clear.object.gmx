@@ -48,7 +48,7 @@ if (chance &lt;= 2) {
     }
 }
 
-if (spawn_chance &lt;= 10) instance_create(x, y, item_hpPot);
+if (spawn_chance &lt;= 5) instance_create(x, y, item_hpPot);
 else if (spawn_chance &gt; 10 &amp;&amp; spawn_chance &lt;= 20) instance_create(x, y, class_enemy);
 
 alarm_set(0, room_speed);

@@ -59,6 +59,7 @@ move_snap(32, 32);
             <string>getInput();
 
 if (place_meeting(x, y, obj_player) &amp;&amp; shift) {
+    global.level++;
     with (class_solid) instance_destroy();
     with (controller_maze) instance_destroy();
     with (controller_grid) instance_destroy(); 

@@ -5,7 +5,7 @@ switch (object) {
     case "Health Pot": 
         instance_activate_object(obj_player);
         with (obj_player) {
-            if (hp < max_hp) hp++;
+            if (hp < max_hp) hp+= 2;
         }
         instance_deactivate_object(obj_player);
         inventory_remove();

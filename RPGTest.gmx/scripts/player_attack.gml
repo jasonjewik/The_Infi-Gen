@@ -24,12 +24,14 @@ if (!attack) {
         }
         show_debug_message(state_name);
         enemy = instance_position(mouse_x, mouse_y, class_enemy)
-        with (enemy) {
-            hp -= other.dmg;
-            show_debug_message("Enemy hit!");
+        if (distance_to_object(enemy) < 32) {
+            with (enemy) {
+                hp -= other.dmg;
+                show_debug_message("Enemy hit!");
+            }
+            number = instance_create(x, y, gui_damage);
+            with (number) dmg = other.dmg;
         }
-        number = instance_create(x, y, gui_damage);
-        with (number) dmg = other.dmg;
     }
     attack = true;
 }

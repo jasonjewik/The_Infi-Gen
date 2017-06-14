@@ -3,7 +3,7 @@
   <spriteName>&lt;undefined&gt;</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>9999</depth>
+  <depth>0</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -25,15 +25,35 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>screen_save("pause.png");
-pauseScreen = sprite_add("pause.png", false, false, false, 0, 0);
+            <string>audio_stop_all();
+goNextRoom = false;
+display = true;
 
-instance_deactivate_all(true);
-
-if (!global.pause) {
-    instance_activate_object(data_inventory);
-    instance_create(window_get_width()/2, window_get_height()/2, gui_inventory);
-}
+alarm_set(0, room_speed);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>display = !display;
+alarm_set(0, room_speed);
 </string>
           </argument>
         </arguments>
@@ -58,49 +78,7 @@ if (!global.pause) {
             <kind>1</kind>
             <string>getInput();
 
-if (escape) {
-    if (instance_exists(gui_inventory)) with (gui_inventory) instance_destroy();
-    instance_activate_all();
-    sprite_delete(pauseScreen);
-    global.pause = false;
-    instance_destroy();
-}
-if (control) game_end();
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="8" enumb="75">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>if (global.pause) {
-    draw_set_font(fnt_text);
-    draw_set_color(c_white);
-    draw_set_halign(fa_center);
-    
-    draw_text(window_get_width()/2, window_get_height()/2, "Paused");
-    
-    draw_set_font(fnt_text_smoler);
-    draw_text(window_mouse_get_x(), window_mouse_get_y(), "'Ctrl' to exit, 'Esc' to resume");
-    
-    draw_set_color(c_black);
-    draw_set_halign(fa_left);
-}
+if (enter) game_restart();
 </string>
           </argument>
         </arguments>
@@ -123,7 +101,19 @@ if (control) game_end();
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_sprite_ext(pauseScreen, image_index, 0, 0, image_xscale, image_yscale, image_angle, c_gray, image_alpha);
+            <string>draw_set_color(c_white);
+draw_set_font(fnt_text_smol);
+draw_set_halign(fa_center);
+
+draw_text(window_get_width()/2, window_get_height()/2, "Game Over");
+
+draw_set_font(fnt_text_smoler);
+if (display) draw_text(window_get_width()/2, window_get_height()/2 + (string_height("1") * 2), "Press 'Enter' to restart");
+
+/*draw_set_font(fnt_text_smoler);
+draw_set_halign(fa_left);
+draw_text(window_mouse_get_x(), window_mouse_get_y() + 10, string(window_get_width()) + ", " + string(window_get_height()));
+draw_text(window_mouse_get_x(), window_mouse_get_y() + 30, string(view_wview) + ", " + string(view_hview));
 </string>
           </argument>
         </arguments>

@@ -4,7 +4,9 @@
     <Config>Configs\Default</Config>
   </Configs>
   <NewExtensions/>
-  <sounds name="sound"/>
+  <sounds name="sound">
+    <sound>sound\snd_bg_track</sound>
+  </sounds>
   <sprites name="sprites">
     <sprite>sprites\spr_player</sprite>
     <sprite>sprites\spr_player_walk</sprite>
@@ -50,6 +52,8 @@
     </scripts>
     <scripts name="Enemy States">
       <script>scripts\enemy_define_path.gml</script>
+      <script>scripts\enemy_idle.gml</script>
+      <script>scripts\enemy_attack.gml</script>
       <script>scripts\enemy_chase.gml</script>
     </scripts>
     <scripts name="Lights">
@@ -97,6 +101,7 @@
       <object>objects\class_enemy</object>
     </objects>
     <objects name="Controllers">
+      <object>objects\controller_music</object>
       <object>objects\controller_grid</object>
       <object>objects\controller_maze</object>
       <object>objects\controller_start</object>
@@ -119,6 +124,7 @@
       <object>objects\gui_pause</object>
       <object>objects\gui_camera</object>
       <object>objects\gui_button</object>
+      <object>objects\gui_button2</object>
       <objects name="Lights">
         <object>objects\gui_lightmap</object>
         <object>objects\class_gui_caster</object>
@@ -143,6 +149,7 @@
     <room>rooms\rm_init</room>
     <room>rooms\rm_1</room>
     <room>rooms\rm_2</room>
+    <room>rooms\rm_end</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>

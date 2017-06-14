@@ -1,8 +1,6 @@
-if (distance_to_object(obj_player) > 288 + 32) state_switch("Idle", true);
-if (h_speed == 0 && v_speed == 0 && obj_player.h_speed == 0 && obj_player.v_speed == 0) {
-    if (place_meeting(x + 1, y, obj_player) || place_meeting(x - 1, y, obj_player) || place_meeting(x, y - 1, obj_player) || place_meeting(x, y + 1, obj_player)) state_switch("Attack", true);
+if (distance_to_object(obj_player) < 256 && !collision_line(x, y, obj_player.x, obj_player.y, wall, false, true)) {
+    state_switch("Chase", true);
 }
-
 if (enemy_define_path() && global.move) {
     if (target_x mod 32 > 0) {
         diff = target_x mod 32;
@@ -33,8 +31,6 @@ if (enemy_define_path() && global.move) {
 
 if (place_meeting(x + h_speed * 2, y, class_enemy)) h_speed = 0;
 if (place_meeting(x, y + v_speed * 2, class_enemy)) v_speed = 0;
-if (place_meeting(x + h_speed * 2, y, obj_player)) h_speed = 0;
-if (place_meeting(x, y + v_speed * 2, obj_player)) v_speed = 0;
 
 if (place_meeting(x + h_speed, y, wall)) {
     while(!place_meeting(x + sign(h_speed), y, wall)) {

@@ -29,6 +29,7 @@
 path = path_add();
 
 hp = irandom_range(5, 10);
+damage = irandom_range(3, 5);
 
 target_x = x;
 target_y = y;
@@ -37,14 +38,42 @@ _target_y = y;
 h_speed = 0;
 v_speed = 0;
 wall = obj_wall;
-
+randX = x;
+randY = y;
+_randX = x;
+_randY = y;
 get_point = false;
 
-enemy_define_path();
 state_machine_init();
+state_create("Idle", enemy_idle);
 state_create("Chase", enemy_chase);
+state_create("Attack", enemy_attack);
 
-state_init("Chase");
+state_init("Idle");
+enemy_define_path();
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="1">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>state_update();
 </string>
           </argument>
         </arguments>
@@ -117,7 +146,7 @@ if (hp &lt;= 0) instance_destroy();
             <kind>1</kind>
             <string>draw_self();
 
-if (path_exists(path)) draw_path(path, x, y, true);
+/*if (path_exists(path)) draw_path(path, x, y, true);
 draw_ellipse_colour(target_x - 2, target_y - 2, target_x + 2, target_y + 2, c_red, c_red, false);
 </string>
           </argument>

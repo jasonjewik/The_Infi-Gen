@@ -124,9 +124,23 @@ global.move = false;
             <string>///Everything
 getInput();
 state_execute();
+
 if (!instance_exists(gui_player_light)) instance_create(x, y, gui_player_light);
 
-if (z) {
+hp = clamp(hp, 0, max_hp);
+if (hp &lt;= 0) {
+    with (class_solid) instance_destroy();
+    with (controller_maze) instance_destroy();
+    with (controller_grid) instance_destroy(); 
+    with (gui_lightmap) instance_destroy();
+    with (class_gui_light) instance_destroy();
+    with (gui_camera) instance_destroy();
+    room_goto(rm_end);
+    instance_deactivate_object(obj_player);
+}
+
+
+/*if (z) {
     with (class_enemy) instance_destroy();
     x = obj_exit.x;
     y = obj_exit.y;
@@ -138,7 +152,7 @@ if (mouse_check_button(mb_right)) {
     mp_grid_clear_cell(global.grid, (mouse_x - mouse_x mod 32)/32, (mouse_y - mouse_y mod 32)/32);
     todel = collision_point(mouse_x, mouse_y, obj_wall, false, true);
     with (todel) instance_destroy();
-}
+}*/
 </string>
           </argument>
         </arguments>
