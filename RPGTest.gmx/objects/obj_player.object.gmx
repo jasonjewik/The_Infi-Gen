@@ -140,14 +140,14 @@ if (hp &lt;= 0) {
 }
 
 
-/*if (z) {
+if (z) {
     with (class_enemy) instance_destroy();
     x = obj_exit.x;
     y = obj_exit.y;
     target_x = x;
     target_y = y;
 }
-if (mouse_check_button_released(mb_left)) instance_create(mouse_x, mouse_y, class_enemy);
+/*if (mouse_check_button_released(mb_left)) instance_create(mouse_x, mouse_y, class_enemy);
 if (mouse_check_button(mb_right)) {
     mp_grid_clear_cell(global.grid, (mouse_x - mouse_x mod 32)/32, (mouse_y - mouse_y mod 32)/32);
     todel = collision_point(mouse_x, mouse_y, obj_wall, false, true);
